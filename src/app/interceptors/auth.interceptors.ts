@@ -20,8 +20,8 @@ export class AuthInterceptor implements HttpInterceptor {
             catchError((error) => {
                 if (error.status === 401) {
                     window.location.href = '/login';
-                    return throwError(error.error);
                 }
+                return throwError(error.error);
             })
         );
     }
