@@ -1,0 +1,15 @@
+form {
+    width: 100%;
+}
+.same-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.same-row > div {
+    flex: 1;
+}
+.same-row > div {
+    margin-left: 0.5rem;
+}

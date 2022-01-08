@@ -1,0 +1,72 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <form [formGroup]="addEmployerForm">
+          <div class="same-row">
+            <div>
+                <mat-form-field class="example-full-width">
+                    <input style="color: #ffffff;" formControlName="firstName" matInput placeholder="Name">
+                  </mat-form-field>
+              </div>
+              <div>
+                  <mat-form-field class="example-full-width">
+                    <input style="color: #ffffff;" formControlName="userName" matInput placeholder="User Name">
+                  </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field class="example-full-width">
+                  <input style="color: #ffffff;" formControlName="email" matInput placeholder="Email">
+                </mat-form-field>
+              </div>
+              <div>
+                <button mat-raised-button [disabled]="!addEmployerForm.valid" (click)="addEmployers()" type="submit" class="btn btn-danger pull-right">Add Employer</button>
+              </div>
+          </div>
+        </form>
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Employers</h4>
+                      <p class="card-category">List of employes created</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      Name
+                                  </th>
+                                  <th>
+                                    User Name
+                                  </th>
+                                  <th>
+                                    Email
+                                  </th>
+                                  <th>
+                                    Action
+                                  </th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let emp of employersList">
+                                    <td>
+                                        {{emp.firstName}}
+                                    </td>
+                                    <td>
+                                        {{emp.userName}}
+                                    </td>
+                                    <td>
+                                        {{emp.email}}
+                                    </td>  
+                                    <td (click)="deleteUser(emp.id)" style="cursor: pointer;">
+                                        <i class="material-icons">delete</i>
+                                    </td>           
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

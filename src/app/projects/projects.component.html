@@ -1,0 +1,89 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <form [formGroup]="addProjectForm">
+          <div class="same-row">
+            <div>
+                <mat-form-field class="example-full-width">
+                    <input style="color: #ffffff;" formControlName="projectName" matInput placeholder="Name">
+                  </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field >
+                  <mat-label>Project Status</mat-label>
+                  <mat-select formControlName="projectStatus" name="food">
+                    <mat-option *ngFor="let stat of status" [value]="stat">
+                      {{stat}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field >
+                  <mat-label>Project Type</mat-label>
+                  <mat-select formControlName="projectType" name="food">
+                    <mat-option *ngFor="let stat of type" [value]="stat">
+                      {{stat}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div>
+                <button mat-raised-button [disabled]="!addProjectForm.valid" (click)="addProject()" type="submit" class="btn btn-danger pull-right">Add Project</button>
+              </div>
+          </div>
+        </form>
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Projects</h4>
+                      <p class="card-category">List of projects</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      Name
+                                  </th>
+                                  <th>
+                                    Status
+                                  </th>
+                                  <th>
+                                    Type
+                                  </th>
+                                  <th>
+                                    Action
+                                  </th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let project of projects">
+                                    <td>
+                                        {{project.projectName}}
+                                    </td>
+                                    <td>
+                                      <mat-form-field >
+                                        <mat-label>Project Status</mat-label>
+                                        <mat-select id="selection-value" [(ngModel)]="project.projectStatus" (ngModelChange)="onValueChange(project)">
+                                          <mat-option *ngFor="let stat of status" [value]="stat">
+                                            {{stat}}
+                                          </mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                    </td>
+                                    <td>
+                                      {{project.projectType}}
+                                    </td> 
+                                    <td (click)="deleteProject(project.id)" style="cursor: pointer;">
+                                        <i class="material-icons">delete</i>
+                                    </td>           
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

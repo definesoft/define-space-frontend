@@ -1,0 +1,35 @@
+<footer class="footer ">
+    <div class="container-fluid">
+        <nav class="pull-left">
+            <ul>
+                <li>
+                    <a href="https://www.definespace.in/">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.definespace.in/about-us">
+                        About Us
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.definespace.in/blog.php">
+                        Blog
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.definespace.in/contact-us">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright pull-right">
+            &copy;
+            2022, made with love by Friends Group.
+        </div>
+    </div>
+    <div *ngIf="logOutButton">
+        <button (click)="logout()" class="btn btn-danger">Logout</button>
+    </div>
+</footer>

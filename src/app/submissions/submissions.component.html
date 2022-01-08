@@ -1,0 +1,82 @@
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <form [formGroup]="submissionForm">
+            <div class="same-row">
+              <div>
+                  <mat-form-field class="example-full-width">
+                      <input style="color: #ffffff;" formControlName="submissionComments" matInput placeholder="Submission Heading">
+                    </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field >
+                    <mat-label>Project</mat-label>
+                    <mat-select formControlName="toProject">
+                      <mat-option *ngFor="let eachProject of projects" [value]="eachProject.id">
+                        {{eachProject.projectName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div>
+                    <input (change)="onAddFile($event)" type="file">
+                </div>
+                <div>
+                  <button mat-raised-button [disabled]="!submissionForm.valid" (click)="addFileAndSubmission()" type="submit" class="btn btn-danger pull-right">Submit</button>
+                </div>
+            </div>
+          </form>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Submissions</h4>
+                        <p class="card-category">List of submissions</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Submission By
+                                    </th>
+                                    <th>
+                                        Submission Comments
+                                    </th>
+                                    <th>
+                                      Submitted At
+                                    </th>
+                                    <th>
+                                      For Project
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let eachSubmission of submissions">
+                                      <td>
+                                            {{eachSubmission.name}}
+                                      </td>
+                                      <td>
+                                          {{eachSubmission.submissionComments}}
+                                      </td>
+                                      <td>
+                                          {{eachSubmission.submitedAt | date}}
+                                      </td>
+                                      <td>
+                                        {{eachSubmission.projectName}}
+                                      </td> 
+                                      <td style="cursor: pointer;">
+                                          <button class="btn btn-link" (click)="generateLink(eachSubmission.fileDetails)" *ngIf="eachSubmission.fileDetails">View Attachment</button>
+                                      </td>           
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
