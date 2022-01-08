@@ -18,8 +18,10 @@ export class AuthInterceptor implements HttpInterceptor {
         });
         return next.handle(cloneRequest).pipe(
             catchError((error) => {
-                window.location.href = '/login';
-                return throwError(error.error);
+                if (error.status === 401) {
+                    window.location.href = '/login';
+                    return throwError(error.error);
+                }
             })
         );
     }
